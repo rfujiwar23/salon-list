@@ -1,0 +1,32 @@
+<h1>ユーザー一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>店舗名</th>
+      <th>住所</th>
+      <th>TEL</th>
+      <th>HP</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @salons.each do |salon| %>
+      <tr>
+        <td><%= salon.id %></td>
+        <td><%= salon.name %></td>
+        <td><%= salon.address %></td>
+        <td><%= salon.phone %></td>
+        <td><%= salon.website %></td>
+        <td><%= salon.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag import_salons_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "アップロードする" %>
+<% end %>
